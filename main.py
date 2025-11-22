@@ -15,7 +15,7 @@ load_dotenv()
 #------Tools-------
 @tool
 def write_json(filepath: str, data: dict) -> str:
-    #Escribe un diccionario en un archivo JSON
+    """Escribe un diccionario en un archivo JSON"""
     try:
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
@@ -26,7 +26,7 @@ def write_json(filepath: str, data: dict) -> str:
 
 @tool
 def read_json(filepath: str) -> str:
-    #Lee un archivo JSON y devuelve su contenido como una cadena
+    """Lee un archivo JSON y devuelve su contenido como una cadena"""
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             data =json.load(f)
@@ -47,16 +47,17 @@ def generate_sample_users(
     min_age: int,
     max_age: int,
 ) -> dict:
-    # Genera una lista de usuarios aleatorios.
+    """ Genera una lista de usuarios aleatorios.
 
-    #Args:
-    #    first_names (List[str]): Lista de nombres de pila.
-    #    last_names (List[str]): Lista de apellidos.
-    #    domains (List[str]): Lista de dominios de correo electrónico.
-    #    min_age (int): Edad mínima.
-    #    max_age (int): Edad máxima.
-    #Returns:
-    #    dict: Lista de usuarios aleatorios.
+    Args:
+        first_names (List[str]): Lista de nombres de pila.
+        last_names (List[str]): Lista de apellidos.
+        domains (List[str]): Lista de dominios de correo electrónico.
+        min_age (int): Edad mínima.
+        max_age (int): Edad máxima.
+    Returns:
+        dict: Lista de usuarios aleatorios.
+    """
     if not first_names:
         return {"Error": "Lista de nombres no puede estar vacía"}
     if not last_names:
@@ -109,29 +110,29 @@ def run_agent(user_input: str, history: List[BaseMessage]) -> AIMessage:
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("DataGen Agent - Sample Data Generator")
+    print("DataGen Agent - Generador de Datos Simple ")
     print("=" * 60)
-    print("Generate Sample User Data")
+    print("Genera datos simples de usuarios")
     print()
-    print("Examples:")
-    print("   - Generate users named John, jane, Mike and save to user.json")
-    print("   - Create users with last names Smith, Jones")
-    print("   - Make users aged 25-35 with company.com emails")
+    print("Ejemplos:")
+    print("   - Genera usuarios con nombres, Juan, Maria, Pedro y guardalos en un user.json")
+    print("   - Crea usuarios con apellidos Garcia, Lopez, Martinez")
+    print("   - Haz usuarios con 25 o 30 años con company.com emails")
     print()
-    print("Commands: 'quit' or 'exit' to end")
+    print("Comandos: 'quit' o 'exit' para finalizar")
     print("=" * 60)
 
 
     history: List[BaseMessage] = []
 
     while True:
-        user_input = input("You: ").strip()
+        user_input = input("Usuario: ").strip()
 
         if user_input.lower() in ['quit', 'exit', 'q', ""]:
-            print("Goodbye!")
+            print("Adios!")
             break
 
-        print("Agent: ", end="", flush=True)
+        print("Agente: ", end="", flush=True)
         response = run_agent(user_input, history)
         print(response.content)
         print()
