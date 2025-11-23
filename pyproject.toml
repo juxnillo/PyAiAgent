@@ -4,3 +4,4 @@ venv = ".venv"
 
 [tool.ruff]
 line-length = 100
+ignore = ["E402"]
