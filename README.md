@@ -4,6 +4,8 @@
 
 PyAIAgent es un proyecto que utiliza la biblioteca LangChain para crear agentes inteligentes que pueden interactuar con diferentes herramientas y sistemas externos. El objetivo principal es proporcionar una plataforma flexible y escalable para desarrollar y desplegar agentes inteligentes en diferentes entornos.
 
+A este proyecto se le puede agregar nuevas funcionalidades y mejoras continuamente.
+
 ## Requisitos
 
 - Python 3.10 o superior
